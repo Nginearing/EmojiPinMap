@@ -21,8 +21,9 @@
 .emoji {
   position: absolute;
   cursor: pointer;
-  border: 1px solid white; /* Add a 1px white border */
-  padding: 2px; /* Add some padding for better visibility */
+  box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.5);
+  border-radius: 50%; /* For circular emojis */
+  padding: 2px;
   font-size: 35px;
 }
 
