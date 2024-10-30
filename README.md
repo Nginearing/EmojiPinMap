@@ -4,7 +4,7 @@
 <br>
 An embeddable map which allows you to use emojis to pin places on a map.
 <br>
-It saves position of emojis through local storage.
+It saves the positions of emojis through local storage.
 <br>
   <br>
 https://nginearing.github.io/EmojiPinMap/
