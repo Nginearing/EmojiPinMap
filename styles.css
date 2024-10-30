@@ -21,6 +21,9 @@
 .emoji {
   position: absolute;
   cursor: pointer;
+  border: 1px solid white; /* Add a 1px white border */
+  padding: 2px; /* Add some padding for better visibility */
+  font-size: 35px;
 }
 
 #emoji-options {
