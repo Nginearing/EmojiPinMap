@@ -9,7 +9,8 @@ function saveEmojiPositions() {
     positions.push({
       left: emoji.style.left,
       top: emoji.style.top,
-      text: emoji.textContent
+      text: emoji.textContent,
+      url: emoji.dataset.url
     });
   });
   localStorage.setItem('emojiPositions', JSON.stringify(positions));
@@ -24,6 +25,7 @@ function loadEmojiPositions() {
       newEmoji.textContent = position.text;
       newEmoji.style.left = position.left;
       newEmoji.style.top = position.top;
+      newEmoji.dataset.url = position.url;
       emojiContainer.appendChild(newEmoji);
       makeEmojiDraggable(newEmoji);
     });
@@ -53,6 +55,14 @@ function makeEmojiDraggable(emoji) {
       e.preventDefault();
     }
   });
+
+  emoji.addEventListener('click', () => {
+    if (emoji.dataset.url) {
+      window.open(emoji.dataset.url, '_blank');
+    } else {
+      emoji.classList.toggle('selected');
+    }
+  });
 }
 
 emojiSource.addEventListener('click', () => {
@@ -64,6 +74,10 @@ emojiOptions.addEventListener('click', (e) => {
     const newEmoji = document.createElement('span');
     newEmoji.classList.add('emoji');
     newEmoji.textContent = e.target.textContent;
+
+    const url = prompt('Enter the URL for this emoji:');
+    newEmoji.dataset.url = url;
+
     newEmoji.style.position = 'absolute';
     newEmoji.style.left = '250px';
     newEmoji.style.top = '150px';
@@ -72,6 +86,7 @@ emojiOptions.addEventListener('click', (e) => {
     emojiOptions.style.display = 'none';
   }
 });
+
 
 // Load saved positions on page load
 loadEmojiPositions();
