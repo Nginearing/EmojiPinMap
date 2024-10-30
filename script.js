@@ -1,5 +1,6 @@
 const emojiSource = document.querySelector('.emoji-source');
 const emojiOptions = document.getElementById('emoji-options');
+const emojiUrlInput = document.getElementById('emoji-url');
 const emojiContainer = document.getElementById('emoji-container');
 
 function saveEmojiPositions() {
@@ -56,8 +57,8 @@ function makeEmojiDraggable(emoji) {
     }
   });
 
-  emoji.addEventListener('click', () => {
-    if (emoji.dataset.url) {
+  emoji.addEventListener('click', (e) => {
+    if (!isDragging && emoji.dataset.url) {
       window.open(emoji.dataset.url, '_blank');
     } else {
       emoji.classList.toggle('selected');
@@ -75,7 +76,7 @@ emojiOptions.addEventListener('click', (e) => {
     newEmoji.classList.add('emoji');
     newEmoji.textContent = e.target.textContent;
 
-    const url = prompt('Enter the URL for this emoji:');
+    const url = emojiUrlInput.value;
     newEmoji.dataset.url = url;
 
     newEmoji.style.position = 'absolute';
@@ -84,6 +85,7 @@ emojiOptions.addEventListener('click', (e) => {
     emojiContainer.appendChild(newEmoji);
     makeEmojiDraggable(newEmoji);
     emojiOptions.style.display = 'none';
+    emojiUrlInput.value = ''; // Clear the input field
   }
 });
 
