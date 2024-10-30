@@ -1,0 +1,42 @@
+#image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* To ensure the image fills the screen without distortion */
+}
+
+.emoji-source {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+}
+
+
+#emoji-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.emoji {
+  position: absolute;
+  cursor: pointer;
+}
+
+#emoji-options {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px;
+  display: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+  gap: 10px; /* Adjust the gap between emojis as needed */
+}
+
+.emoji-option {
+  cursor: pointer;
+  text-align: center;
+}
